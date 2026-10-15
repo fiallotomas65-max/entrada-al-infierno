@@ -1,0 +1,674 @@
+/* =====================================================
+   Clinical Data System (C.D.S.) - Hospital de Clinicas
+   Hoja de estilos general
+   ===================================================== */
+
+:root {
+    --rojo: #c0392b;
+    --rojo-oscuro: #a5281a;
+    --rojo-suave: #fdf0ee;
+    --gris-900: #1f2226;
+    --gris-700: #3d4148;
+    --gris-500: #6b7280;
+    --gris-300: #d7dce1;
+    --gris-100: #f1f3f5;
+    --fondo: #f4f5f7;
+    --sombra: 0 1px 3px rgba(31, 34, 38, 0.08), 0 1px 2px rgba(31, 34, 38, 0.06);
+    --sombra-media: 0 4px 14px rgba(31, 34, 38, 0.10);
+    --radio: 12px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15.5px;
+    color: var(--gris-900);
+    background: var(--fondo);
+    -webkit-font-smoothing: antialiased;
+}
+
+main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 32px 28px 60px 28px;
+}
+
+h1, h2, h3 {
+    color: var(--gris-900);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 1.55em;
+    margin: 0 0 24px 0;
+}
+
+h2 {
+    font-size: 1.05em;
+    margin: 0 0 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+h2::before {
+    content: "";
+    width: 4px;
+    height: 16px;
+    background: var(--rojo);
+    border-radius: 2px;
+    display: inline-block;
+}
+
+h3 {
+    font-size: 0.98em;
+    margin: 0 0 10px 0;
+}
+
+a {
+    color: var(--rojo);
+}
+
+/* cada bloque de la pantalla (listado, formulario, ficha) es una tarjeta */
+.seccion {
+    background: #ffffff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 22px 24px;
+    margin-bottom: 24px;
+}
+
+/* ---------- Logo C.D.S. con pulso ---------- */
+.logo-cds {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-cds .logo-texto {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo-cds svg {
+    display: block;
+}
+
+.logo-grande {
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.logo-grande .logo-texto {
+    font-size: 1.5em;
+    letter-spacing: 3px;
+}
+
+.logo-grande .logo-sub {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.78em;
+    letter-spacing: 3px;
+    color: var(--gris-500);
+}
+
+/* ---------- Encabezado simple (paginas publicas) ---------- */
+.encabezado {
+    background: #ffffff;
+    border-bottom: 1px solid var(--gris-300);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.navegacion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.enlace-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--gris-900);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.92em;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.enlace-nav svg {
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+}
+
+.enlace-nav:hover {
+    background: var(--gris-100);
+}
+
+.enlace-nav.activo {
+    background: var(--rojo);
+    color: #ffffff;
+}
+
+.enlace-usuario {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85em;
+}
+
+/* ---------- Barra lateral (paginas privadas del panel) ---------- */
+.layout-privado {
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+.barra-lateral {
+    width: 240px;
+    flex-shrink: 0;
+    background: var(--gris-900);
+    display: flex;
+    flex-direction: column;
+    padding: 22px 14px;
+}
+
+.barra-lateral #logo-barra {
+    padding: 0 6px 26px 6px;
+}
+
+.barra-lateral .logo-cds {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.barra-lateral .logo-cds .logo-texto {
+    color: #ffffff;
+    font-size: 1em;
+}
+
+/* dentro de la barra lateral, el menu se acomoda vertical, tipo "pildoras" */
+.barra-lateral .navegacion {
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 3px;
+    flex: 1;
+}
+
+.barra-lateral .enlace-nav {
+    color: #c4c8ce;
+    padding: 10px 12px;
+    border-radius: 8px;
+}
+
+.barra-lateral .enlace-nav svg {
+    opacity: 0.85;
+}
+
+.barra-lateral .enlace-nav:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: #ffffff;
+}
+
+.barra-lateral .enlace-nav.activo {
+    background: var(--rojo);
+    color: #ffffff;
+}
+
+.barra-lateral .enlace-nav.activo svg {
+    opacity: 1;
+}
+
+.zona-usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 8px 4px 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 10px;
+}
+
+.avatar-usuario {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--rojo);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85em;
+    flex-shrink: 0;
+}
+
+.datos-usuario {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.datos-usuario .nombre-usuario {
+    color: #ffffff;
+    font-size: 0.85em;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.datos-usuario .rol-usuario {
+    color: #9498a0;
+    font-size: 0.75em;
+}
+
+.boton-salir {
+    background: none;
+    border: none;
+    color: #9498a0;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.boton-salir:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.boton-salir svg {
+    width: 18px;
+    height: 18px;
+}
+
+.contenido-principal {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.contenido-principal main {
+    flex: 1;
+}
+
+@media (max-width: 780px) {
+    .layout-privado {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .barra-lateral {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px 14px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .barra-lateral #logo-barra {
+        padding: 0;
+    }
+
+    .barra-lateral .logo-cds {
+        flex-direction: row;
+    }
+
+    .barra-lateral .navegacion {
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1;
+    }
+
+    .barra-lateral .enlace-nav span {
+        display: none;
+    }
+
+    .zona-usuario {
+        border-top: none;
+        margin-top: 0;
+        padding: 0;
+    }
+
+    .datos-usuario {
+        display: none;
+    }
+
+    main {
+        padding: 20px 16px 40px 16px;
+    }
+}
+
+/* ---------- Pie ---------- */
+.pie {
+    text-align: center;
+    padding: 18px;
+    font-size: 0.8em;
+    color: var(--gris-500);
+}
+
+/* ---------- Mensajes ---------- */
+.mensaje {
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 0.92em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mensaje-exito {
+    background: #eafaf0;
+    color: #1a7f4d;
+}
+
+.mensaje-error {
+    background: var(--rojo-suave);
+    color: var(--rojo-oscuro);
+}
+
+/* ---------- Tablas ---------- */
+.tabla {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+    font-size: 0.92em;
+    margin-bottom: 24px;
+}
+
+.tabla th {
+    background: var(--gris-100);
+    color: var(--gris-700);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.82em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.tabla td {
+    padding: 12px 16px;
+    border-top: 1px solid var(--gris-100);
+}
+
+.tabla tr:hover td {
+    background: var(--gris-100);
+}
+
+.enlace-editar {
+    color: var(--gris-700);
+    text-decoration: none;
+    cursor: pointer;
+    background: var(--gris-100);
+    border: none;
+    font-size: 0.85em;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.enlace-editar:hover {
+    background: var(--gris-300);
+}
+
+.enlace-eliminar {
+    color: var(--rojo-oscuro);
+    text-decoration: none;
+    cursor: pointer;
+    background: var(--rojo-suave);
+    border: none;
+    font-size: 0.85em;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.enlace-eliminar:hover {
+    background: #f8dcd8;
+}
+
+/* ---------- Formularios ---------- */
+form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.88em;
+    color: var(--gris-700);
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form input[type="password"],
+form input[type="file"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 16px;
+    border: 1px solid var(--gris-300);
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-family: inherit;
+    background: #fdfdfd;
+    transition: border-color 0.15s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: none;
+    border-color: var(--rojo);
+    background: #ffffff;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+.boton {
+    background: var(--rojo);
+    color: #ffffff;
+    border: none;
+    padding: 11px 22px;
+    font-size: 0.95em;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(192, 57, 43, 0.3);
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.boton:hover {
+    background: var(--rojo-oscuro);
+    transform: translateY(-1px);
+}
+
+.boton-secundario {
+    background: var(--gris-100);
+    color: var(--gris-900);
+    box-shadow: none;
+    margin-left: 8px;
+}
+
+.boton-secundario:hover {
+    background: var(--gris-300);
+    transform: none;
+}
+
+/* ---------- Estados de traslado ---------- */
+.estado {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.78em;
+}
+
+.estado-Pendiente { background: #fdf2ce; color: #8a6d1e; }
+.estado-En-curso  { background: var(--rojo-suave); color: var(--rojo-oscuro); }
+.estado-Finalizado { background: #e0f2e9; color: #1a7f37; }
+.estado-Cancelado { background: var(--gris-100); color: var(--gris-500); }
+
+/* ---------- Tarjetas de resumen (panel) ---------- */
+.tarjetas-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.tarjeta-resumen {
+    background: #ffffff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.tarjeta-resumen:hover {
+    box-shadow: var(--sombra-media);
+    transform: translateY(-2px);
+}
+
+.tarjeta-resumen .icono-tarjeta {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: var(--rojo-suave);
+    color: var(--rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tarjeta-resumen .icono-tarjeta svg {
+    width: 22px;
+    height: 22px;
+}
+
+.tarjeta-resumen .numero {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--gris-900);
+    line-height: 1.1;
+}
+
+.tarjeta-resumen .etiqueta {
+    font-size: 0.82em;
+    color: var(--gris-500);
+}
+
+/* ---------- Pagina publica de documentos ---------- */
+.intro-publica {
+    font-size: 1.02em;
+    color: var(--gris-500);
+    line-height: 1.55;
+}
+
+.lista-documentos {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tarjeta-documento {
+    background: #ffffff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.tarjeta-documento h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.05em;
+}
+
+.boton-documento {
+    display: block;
+    text-align: center;
+    background: var(--rojo);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.boton-documento:hover {
+    background: var(--rojo-oscuro);
+}
+
+@media (min-width: 700px) {
+    .tarjeta-documento {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .boton-documento {
+        min-width: 160px;
+    }
+}
+
+/* ---------- Login ---------- */
+.pantalla-login {
+    max-width: 380px;
+    margin: 70px auto;
+    background: #ffffff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra-media);
+    padding: 36px 32px;
+    text-align: center;
+}
+
+/* ---------- Preguntas de encuesta ---------- */
+.pregunta-formulario {
+    background: #ffffff;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+}
+
+.aclaracion {
+    font-size: 0.85em;
+    color: var(--gris-500);
+    margin-top: -10px;
+    margin-bottom: 16px;
+}
+
+.oculto {
+    display: none !important;
+}

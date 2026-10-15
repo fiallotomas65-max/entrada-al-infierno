@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Cargar Archivo - C.D.S.</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css?v=6">
+</head>
+<body>
+    <div class="layout-privado">
+        <aside class="barra-lateral" id="barra-lateral"></aside>
+        <div class="contenido-principal">
+
+            <main>
+                <h1>Cargar Archivo</h1>
+                <div id="zona-mensaje"></div>
+
+                <div style="background: #fff; padding: 25px; border-radius: 8px; border: 1px solid #e5e7eb; max-width: 600px;">
+                    <form id="form-carga" enctype="multipart/form-data">
+                        <label for="titulo">Título</label>
+                        <input type="text" id="titulo" name="titulo" required style="width: 100%; margin-bottom: 15px;">
+
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion" rows="4" required style="width: 100%; margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit;"></textarea>
+
+                        <label for="categoria">Categoría</label>
+                        <input type="text" id="categoria" name="categoria" placeholder="Ej: Protocolos, Informes, Guías" required style="width: 100%; margin-bottom: 15px;">
+
+                        <label for="archivo">Archivo (PDF)</label>
+                        <input type="file" id="archivo" name="archivo" accept=".pdf" required style="width: 100%; margin-bottom: 30px;">
+
+                        <div style="display: flex; justify-content: space-between;">
+                            <a href="documentos.html" class="boton" style="background-color: #9ca3af; text-decoration: none;">Volver</a>
+                            <button type="submit" class="boton">Guardar documento</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+
+            <footer class="pie">C.D.S. &middot; Hospital de Clínicas</footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/comun.js?v=6"></script>
+    <script src="../assets/js/cargar_documento.js?v=6"></script>
+</body>
+</html>

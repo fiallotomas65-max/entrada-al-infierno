@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nueva Ruta - C.D.S.</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css?v=12">
+</head>
+<body>
+    <div class="layout-privado">
+        <aside class="barra-lateral" id="barra-lateral"></aside>
+        <div class="contenido-principal">
+
+            <main>
+                <h1>Nueva Ruta</h1>
+                <div id="zona-mensaje"></div>
+
+                <form id="form-nueva-ruta" style="max-width: 700px; background: #fff; padding: 25px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    
+                    <div style="margin-bottom: 15px;">
+                        <label style="font-weight: 600; display:block; margin-bottom:4px;">Nombre / Identificador de la Ruta *</label>
+                        <input type="text" id="nombre_ruta" name="nombre_ruta" placeholder="Ej: Trayecto Hospital de Clínicas - CTI Maciel" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Origen *</label>
+                            <input type="text" id="origen" name="origen" required placeholder="Ej: Hospital de Clínicas" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Destino *</label>
+                            <input type="text" id="destino" name="destino" required placeholder="Ej: Hospital Maciel" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Distancia Estimada (km)</label>
+                            <input type="number" step="0.1" id="distancia_km" name="distancia_km" placeholder="Ej: 8.5" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Tiempo Estimado (minutos)</label>
+                            <input type="number" id="tiempo_estimado_min" name="tiempo_estimado_min" placeholder="Ej: 20" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="font-weight: 600; display:block; margin-bottom:4px;">Puntos Clave / Observaciones</label>
+                        <textarea id="observaciones" name="observaciones" rows="3" placeholder="Ej: Vía rápida por Av. Italia. Evitar horas pico por Bulevar Artigas." style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <a href="rutas.html" class="boton" style="background-color: #9ca3af; text-decoration: none;">Cancelar</a>
+                        <button type="submit" class="boton" style="background-color: #2563eb;">Guardar Ruta</button>
+                    </div>
+                </form>
+            </main>
+
+            <footer class="pie">C.D.S. &middot; Hospital de Clínicas</footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/comun.js?v=12"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            var usuario = await iniciarPaginaPrivada();
+            if (!usuario) return;
+
+            var form = document.getElementById("form-nueva-ruta");
+            form.addEventListener("submit", async function(e) {
+                e.preventDefault();
+                try {
+                    var resp = await fetch(RAIZ + "api/rutas_guardar.php", {
+                        method: "POST",
+                        body: new FormData(form)
+                    });
+                    var datos = await resp.json();
+                    if (!datos.ok) throw new Error(datos.mensaje);
+
+                    guardarMensaje("Ruta registrada con éxito.", "exito");
+                    window.location.href = "rutas.html";
+                } catch (err) {
+                    mostrarMensaje(err.message, "error");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

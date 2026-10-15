@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Personal - C.D.S.</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css?v=11">
+</head>
+<body>
+    <div class="layout-privado">
+        <aside class="barra-lateral" id="barra-lateral"></aside>
+        <div class="contenido-principal">
+
+            <main>
+                <h1>Registrar Personal</h1>
+                <div id="zona-mensaje"></div>
+
+                <form id="form-nuevo-personal" style="max-width: 800px; background: #fff; padding: 25px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    
+                    <h2 style="font-size: 1.1rem; margin-top:0; color:#1f2937;">Datos Personales y de Contacto</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Nombre *</label>
+                            <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Apellido *</label>
+                            <input type="text" id="apellido" name="apellido" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Documento de Identidad (CI) *</label>
+                            <input type="text" id="documento" name="documento" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Teléfono Corporativo / Interno</label>
+                            <input type="text" id="telefono" name="telefono" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <h2 style="font-size: 1.1rem; color:#1f2937;">Clasificación Operativa y Área</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Clasificación Operativa *</label>
+                            <select id="clasificacion_operativa" name="clasificacion_operativa" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option value="">-- Seleccionar --</option>
+                                <option value="Chofer de Ambulancia">Chofer de Ambulancia</option>
+                                <option value="Copiloto / Paramedico">Copiloto / Paramédico</option>
+                                <option value="Administrativo DTI">Administrativo DTI</option>
+                                <option value="Personal Medico">Personal Médico</option>
+                                <option value="Enfermeria">Enfermería</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Área / Especialización</label>
+                            <input type="text" id="especialidad" name="especialidad" placeholder="Ej: Pediatría, Emergencias, Logística" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <h2 style="font-size: 1.1rem; color:#1f2937;">Gestión de Turnos, Guardias y Certificaciones</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Turno / Guardia Asignada</label>
+                            <select id="turno" name="turno" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option value="Matutino">Matutino (06:00 - 14:00)</option>
+                                <option value="Vespertino">Vespertino (14:00 - 22:00)</option>
+                                <option value="Nocturno">Nocturno (22:00 - 06:00)</option>
+                                <option value="Guardia 24hs">Guardia 24hs</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Vencimiento Libreta de Conducir</label>
+                            <input type="date" id="vencimiento_libreta" name="vencimiento_libreta" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="font-weight: 600; display:block; margin-bottom:4px;">Certificaciones y Capacitaciones (Separadas por coma)</label>
+                        <input type="text" id="certificaciones" name="certificaciones" placeholder="Ej: Soporte Vital Básico (SVB), RCP Avanzado, Manejo Biológico" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <a href="personal.html" class="boton" style="background-color: #9ca3af; text-decoration: none;">Cancelar</a>
+                        <button type="submit" class="boton" style="background-color: #2563eb;">Guardar Funcionario</button>
+                    </div>
+                </form>
+            </main>
+
+            <footer class="pie">C.D.S. &middot; Hospital de Clínicas</footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/comun.js?v=11"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+            var usuario = await iniciarPaginaPrivada();
+            if (!usuario) return;
+
+            var form = document.getElementById("form-nuevo-personal");
+            form.addEventListener("submit", async function(e) {
+                e.preventDefault();
+                try {
+                    var resp = await fetch(RAIZ + "api/personal_guardar.php", {
+                        method: "POST",
+                        body: new FormData(form)
+                    });
+                    var datos = await resp.json();
+                    if (!datos.ok) throw new Error(datos.mensaje);
+
+                    guardarMensaje("Funcionario registrado exitosamente.", "exito");
+                    window.location.href = "personal.html";
+                } catch (err) {
+                    mostrarMensaje(err.message, "error");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

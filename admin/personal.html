@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Personal - C.D.S.</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css?v=11">
+</head>
+<body>
+    <div class="layout-privado">
+        <aside class="barra-lateral" id="barra-lateral"></aside>
+        <div class="contenido-principal">
+
+            <main>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 15px;">
+                    <h1 style="margin: 0;">Personal</h1>
+                    <a href="nuevo_personal.html" class="boton" style="text-decoration: none; background-color: #2563eb; display: inline-flex; align-items: center; gap: 6px;">
+                        + Registrar Personal
+                    </a>
+                </div>
+
+                <div id="zona-mensaje"></div>
+
+                <!-- Barra de Búsqueda y Filtros -->
+                <div style="background: #fff; padding: 15px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 20px; display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                    <div style="flex: 2; min-width: 220px;">
+                        <input type="text" id="input-busqueda" placeholder="Buscar por nombre, apellido o CI..." style="width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem;">
+                    </div>
+                    <div style="flex: 1; min-width: 180px;">
+                        <select id="filtro-especialidad" style="width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem;">
+                            <option value="">-- Área / Especialización --</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1; min-width: 160px;">
+                        <select id="filtro-turno" style="width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9rem;">
+                            <option value="">-- Todos los Turnos --</option>
+                            <option value="Matutino">Matutino (06:00 - 14:00)</option>
+                            <option value="Vespertino">Vespertino (14:00 - 22:00)</option>
+                            <option value="Nocturno">Nocturno (22:00 - 06:00)</option>
+                            <option value="Guardia 24hs">Guardia 24hs</option>
+                        </select>
+                    </div>
+                    <button type="button" id="btn-limpiar" class="boton" style="background: #6b7280; padding: 8px 12px; font-size: 0.85rem;">Limpiar</button>
+                </div>
+
+                <div id="listado-personal">
+                    <p style="color:#6b7280;">Cargando personal...</p>
+                </div>
+            </main>
+
+            <footer class="pie">C.D.S. &middot; Hospital de Clínicas</footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/comun.js?v=11"></script>
+    <script src="../assets/js/personal.js?v=11"></script>
+</body>
+</html>

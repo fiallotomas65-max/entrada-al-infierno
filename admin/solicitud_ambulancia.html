@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Solicitud de Ambulancia - C.D.S.</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css?v=9">
+</head>
+<body>
+    <div class="layout-privado">
+        <aside class="barra-lateral" id="barra-lateral"></aside>
+        <div class="contenido-principal">
+
+            <main>
+                <h1>Solicitud de ambulancia</h1>
+                <div id="zona-mensaje"></div>
+
+                <form id="form-solicitud-ambulancia" style="max-width: 800px; background: #fff; padding: 25px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    
+                    <h2 style="font-size: 1.1rem; margin-top:0; color:#1f2937;">Detalle del Elemento a Trasladar</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Tipo de Elemento</label>
+                            <select id="tipo_elemento" name="tipo_elemento" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                                <option value="Paciente">Paciente</option>
+                                <option value="Material biologico">Material Biológico</option>
+                                <option value="Equipamiento">Equipamiento Médico</option>
+                                <option value="Insumo">Insumos / Fármacos</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Especificación / Detalle del Elemento</label>
+                            <input type="text" id="elemento" name="elemento" placeholder="Ej: Nombre paciente, Muestra biológica Piso 3, Respirador" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <h2 style="font-size: 1.1rem; color:#1f2937;">Requerimientos Especiales</h2>
+                    <div style="background: #f9fafb; padding: 12px; border-radius: 6px; border: 1px solid #e5e7eb; margin-bottom: 20px;">
+                        <div style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 8px;">
+                            <label><input type="checkbox" class="chk-req" value="Cadena de Frío / Refrigeración"> Cadena de Frío</label>
+                            <label><input type="checkbox" class="chk-req" value="Soporte Vital Básico"> Soporte Vital</label>
+                            <label><input type="checkbox" class="chk-req" value="Tanque de Oxígeno"> Oxígeno</label>
+                            <label><input type="checkbox" class="chk-req" value="Acompañamiento Médico"> Acompañante Médico</label>
+                            <label><input type="checkbox" class="chk-req" value="Manejo Frágil / Delicado"> Manejo Delicado</label>
+                        </div>
+                        <input type="text" id="req_adicional" placeholder="Otros requerimientos especiales..." style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                    </div>
+
+                    <h2 style="font-size: 1.1rem; color:#1f2937;">Asignación de Personal y Vehículo (Con Validación)</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Conductor Responsable *</label>
+                            <select id="id_conductor" name="id_conductor" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></select>
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Copiloto / Acompañante (Opcional)</label>
+                            <select id="id_copiloto" name="id_copiloto" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></select>
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Ambulancia Asignada *</label>
+                            <select id="id_ambulancia" name="id_ambulancia" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></select>
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Ruta Predefinida (Opcional)</label>
+                            <select id="id_ruta" name="id_ruta" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></select>
+                        </div>
+                    </div>
+
+                    <h2 style="font-size: 1.1rem; color:#1f2937;">Ubicación y Fechas</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Punto de Origen *</label>
+                            <input type="text" id="origen" name="origen" value="Hospital de Clínicas" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Punto de Destino *</label>
+                            <input type="text" id="destino" name="destino" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                        <div>
+                            <label style="font-weight: 600; display:block; margin-bottom:4px;">Fecha del Traslado *</label>
+                            <input type="date" id="fecha_traslado" name="fecha_traslado" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <label style="font-weight: 600; display:block; margin-bottom:4px;">Observaciones Adicionales</label>
+                        <textarea id="observaciones" name="observaciones" rows="3" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-family:inherit;"></textarea>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <a href="ambulancias.html" class="boton" style="background-color: #9ca3af; text-decoration: none;">Cancelar</a>
+                        <button type="submit" class="boton" style="background-color: #2563eb;">Registrar Solicitud</button>
+                    </div>
+                </form>
+            </main>
+
+            <footer class="pie">C.D.S. &middot; Hospital de Clínicas</footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/comun.js?v=9"></script>
+    <script src="../assets/js/solicitud_ambulancia.js?v=9"></script>
+</body>
+</html>

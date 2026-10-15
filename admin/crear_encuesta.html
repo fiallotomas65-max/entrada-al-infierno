@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Crear Encuesta - C.D.S.</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css?v=7">
+</head>
+<body>
+    <div class="layout-privado">
+        <aside class="barra-lateral" id="barra-lateral"></aside>
+        <div class="contenido-principal">
+
+            <main>
+                <h1>Crear Encuesta</h1>
+                <div id="zona-mensaje"></div>
+
+                <form id="form-crear-encuesta" style="max-width: 750px;">
+                    <div style="background: #fff; padding: 25px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 25px;">
+                        <label for="titulo" style="font-weight: 600; display: block; margin-bottom: 5px;">Título de la encuesta</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Ej: Encuesta de satisfacción del usuario trasplantado" required style="width: 100%; margin-bottom: 15px; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px;">
+
+                        <label for="descripcion" style="font-weight: 600; display: block; margin-bottom: 5px;">Descripción u objetivo</label>
+                        <textarea id="descripcion" name="descripcion" rows="3" placeholder="Breve texto indicando la finalidad de la encuesta..." style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-family: inherit;"></textarea>
+                    </div>
+
+                    <h2 style="font-size: 1.25rem; margin-bottom: 15px;">Preguntas de la encuesta</h2>
+                    
+                    <div id="contenedor-preguntas" style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 20px;">
+                        <!-- Las preguntas se generan dinámicamente -->
+                    </div>
+
+                    <button type="button" id="btn-agregar-pregunta" class="boton" style="background-color: #4b5563; margin-bottom: 30px;">
+                        + Agregar Pregunta
+                    </button>
+
+                    <div style="display: flex; justify-content: space-between; border-top: 1px solid #e5e7eb; padding-top: 20px;">
+                        <a href="encuestas.html" class="boton" style="background-color: #9ca3af; text-decoration: none;">Cancelar / Volver</a>
+                        <button type="submit" class="boton" style="background-color: #2563eb;">Guardar Encuesta</button>
+                    </div>
+                </form>
+            </main>
+
+            <footer class="pie">C.D.S. &middot; Hospital de Clínicas</footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/comun.js?v=7"></script>
+    <script src="../assets/js/crear_encuesta.js?v=7"></script>
+</body>
+</html>

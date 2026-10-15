@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Traslados - C.D.S.</title>
+    <link rel="stylesheet" href="../assets/css/estilos.css?v=3">
+</head>
+<body>
+    <div class="layout-privado">
+        <aside class="barra-lateral" id="barra-lateral"></aside>
+        <div class="contenido-principal">
+
+    <main>
+        <h1>Gestion de traslados</h1>
+        <div id="zona-mensaje"></div>
+
+        <!-- ---------- listado ---------- -->
+        <div id="vista-listado">
+            <h2>Listado de traslados</h2>
+
+            <label for="filtro-estado">Filtrar por estado</label>
+            <select id="filtro-estado" onchange="cargarTraslados()" style="max-width:220px;">
+                <option value="">Todos</option>
+                <option>Pendiente</option>
+                <option>En curso</option>
+                <option>Finalizado</option>
+                <option>Cancelado</option>
+            </select>
+
+            <table class="tabla" style="margin-top:14px;">
+                <thead><tr><th>Fecha</th><th>Ambulancia</th><th>Conductor</th><th>Elemento</th><th>Destino</th><th>Estado</th><th>Acciones</th></tr></thead>
+                <tbody id="cuerpo-tabla-traslados"><tr><td colspan="7">Cargando...</td></tr></tbody>
+            </table>
+
+            <h2>Nuevo traslado</h2>
+            <form id="form-traslado" class="seccion">
+                <label for="id_ambulancia">Ambulancia</label>
+                <select id="id_ambulancia" name="id_ambulancia"><option value="">Cargando...</option></select>
+
+                <label for="id_conductor">Conductor</label>
+                <select id="id_conductor" name="id_conductor"><option value="">Cargando...</option></select>
+
+                <label for="id_copiloto">Copiloto</label>
+                <select id="id_copiloto" name="id_copiloto"><option value="">Sin copiloto</option></select>
+
+                <label for="tipo_elemento">Tipo de elemento</label>
+                <select id="tipo_elemento" name="tipo_elemento">
+                    <option>Paciente</option>
+                    <option>Material biologico</option>
+                    <option>Equipamiento</option>
+                    <option>Insumo</option>
+                </select>
+
+                <label for="elemento">Paciente o elemento</label>
+                <input type="text" id="elemento" name="elemento" maxlength="300">
+
+                <label for="id_ruta">Ruta</label>
+                <select id="id_ruta" name="id_ruta"><option value="">Sin ruta predefinida</option></select>
+
+                <label for="origen">Punto de origen</label>
+                <input type="text" id="origen" name="origen" maxlength="300" value="Hospital de Clinicas">
+
+                <label for="destino">Destino</label>
+                <input type="text" id="destino" name="destino" maxlength="300">
+
+                <label for="fecha_traslado">Fecha del traslado</label>
+                <input type="date" id="fecha_traslado" name="fecha_traslado">
+
+                <label for="observaciones">Observaciones</label>
+                <textarea id="observaciones" name="observaciones" rows="2"></textarea>
+
+                <button type="submit" class="boton">Guardar traslado</button>
+            </form>
+        </div>
+
+        <!-- ---------- ficha y seguimiento de un traslado ---------- -->
+        <div id="vista-detalle" class="oculto">
+            <button class="enlace-editar" onclick="volverAlListado()">&larr; Volver al listado</button>
+
+            <h2>Ficha del traslado</h2>
+            <table class="tabla" id="tabla-ficha"></table>
+
+            <h2>Historial</h2>
+            <table class="tabla">
+                <thead><tr><th>Fecha y hora</th><th>Estado</th><th>Comentario</th><th>Usuario</th></tr></thead>
+                <tbody id="cuerpo-tabla-historial"></tbody>
+            </table>
+
+            <h2>Cambiar estado</h2>
+            <div id="zona-cambio-estado"></div>
+        </div>
+    </main>
+
+        <footer class="pie">C.D.S. &middot; Hospital de Clinicas</footer>
+        </div>
+    </div>
+
+    <script src="../assets/js/comun.js?v=3"></script>
+    <script src="../assets/js/traslados.js?v=3"></script>
+</body>
+</html>
